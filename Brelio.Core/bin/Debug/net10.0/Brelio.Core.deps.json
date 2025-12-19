@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Brelio.Core/1.0.0": {
+        "runtime": {
+          "Brelio.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Brelio.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

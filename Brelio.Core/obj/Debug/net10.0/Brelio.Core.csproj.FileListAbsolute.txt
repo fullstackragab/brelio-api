@@ -1,0 +1,11 @@
+C:\_companies\brelio\brelio-api\Brelio.Core\bin\Debug\net10.0\Brelio.Core.deps.json
+C:\_companies\brelio\brelio-api\Brelio.Core\bin\Debug\net10.0\Brelio.Core.dll
+C:\_companies\brelio\brelio-api\Brelio.Core\bin\Debug\net10.0\Brelio.Core.pdb
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.AssemblyInfoInputs.cache
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.AssemblyInfo.cs
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.csproj.CoreCompileInputs.cache
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.dll
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\refint\Brelio.Core.dll
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.pdb
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\ref\Brelio.Core.dll
