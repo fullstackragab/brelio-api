@@ -192,3 +192,5 @@ C:\_companies\brelio\brelio-api\Brelio.Api\obj\Debug\net10.0\refint\Brelio.Api.d
 C:\_companies\brelio\brelio-api\Brelio.Api\obj\Debug\net10.0\Brelio.Api.pdb
 C:\_companies\brelio\brelio-api\Brelio.Api\obj\Debug\net10.0\Brelio.Api.genruntimeconfig.cache
 C:\_companies\brelio\brelio-api\Brelio.Api\obj\Debug\net10.0\ref\Brelio.Api.dll
+C:\_companies\brelio\brelio-api\Brelio.Api\obj\Debug\net10.0\Brelio.Api.sourcelink.json
+C:\_companies\brelio\brelio-api\Brelio.Api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
