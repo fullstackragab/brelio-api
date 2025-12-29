@@ -25,7 +25,7 @@ public static class DatabaseSeeder
                 SortOrder = 1,
                 IsActive = true,
                 IsCustom = false,
-                Description = "Perfect for freelancers and solo founders getting started with crypto invoicing.",
+                Description = "Perfect for freelancers and solo founders getting started with digital dollar invoicing.",
                 TargetAudience = "Freelancers & solo founders",
                 FeatureUsdc = true,
                 FeatureSol = false,

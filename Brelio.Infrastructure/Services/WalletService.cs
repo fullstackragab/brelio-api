@@ -30,7 +30,7 @@ public partial class WalletService : IWalletService
     {
         if (!await ValidateSolanaAddress(request.Address))
         {
-            throw new ArgumentException("Invalid Solana wallet address");
+            throw new ArgumentException("Invalid payment address");
         }
 
         if (await _context.Wallets.AnyAsync(w => w.UserId == userId && w.Address == request.Address))
