@@ -13,7 +13,9 @@
       "Bash(Brelio.Api/Controllers/V1/*.cs)",
       "Bash(Brelio.Api/Program.cs )",
       "Bash(Brelio.Core/Brelio.Core.csproj )",
-      "Bash(Brelio.Core/DTOs/*.cs)"
+      "Bash(Brelio.Core/DTOs/*.cs)",
+      "Bash(git rm:*)",
+      "Bash(dir:*)"
     ]
   }
 }
