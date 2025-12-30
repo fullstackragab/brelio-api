@@ -62,3 +62,4 @@ C:\_companies\brelio\brelio-api\Brelio.Infrastructure\obj\Debug\net10.0\Brelio.I
 C:\_companies\brelio\brelio-api\Brelio.Infrastructure\obj\Debug\net10.0\Brelio.Infrastructure.genruntimeconfig.cache
 C:\_companies\brelio\brelio-api\Brelio.Infrastructure\obj\Debug\net10.0\ref\Brelio.Infrastructure.dll
 C:\_companies\brelio\brelio-api\Brelio.Infrastructure\obj\Debug\net10.0\Brelio.Infrastructure.sourcelink.json
+C:\_companies\brelio\brelio-api\Brelio.Infrastructure\bin\Debug\net10.0\Brelio.Core.xml

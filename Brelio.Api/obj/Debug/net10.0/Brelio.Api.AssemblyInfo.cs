@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Brelio.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+213a758343daf94083aabab4b7356cad11ab8f8d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3dc589285eb67f6286fdb47c7b3f253965ea9260")]
 [assembly: System.Reflection.AssemblyProductAttribute("Brelio.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Brelio.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

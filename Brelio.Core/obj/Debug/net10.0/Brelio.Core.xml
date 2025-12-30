@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Brelio.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Brelio.Core.Constants.CurrencyConstants">
+            <summary>
+            Currency configuration for Brelio.
+            All invoices are USDC-only on Solana network.
+            SOL is only accepted for subscription payments.
+            </summary>
+        </member>
+        <member name="F:Brelio.Core.Constants.CurrencyConstants.InvoiceCurrency">
+            <summary>
+            The only supported invoice currency
+            </summary>
+        </member>
+        <member name="F:Brelio.Core.Constants.CurrencyConstants.Network">
+            <summary>
+            The only supported network
+            </summary>
+        </member>
+        <member name="F:Brelio.Core.Constants.CurrencyConstants.SubscriptionPaymentCurrencies">
+            <summary>
+            Currencies accepted for subscription payments
+            </summary>
+        </member>
+        <member name="F:Brelio.Core.Constants.CurrencyConstants.UsdcMintAddress">
+            <summary>
+            USDC token mint address on Solana mainnet
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.Constants.CurrencyConstants.IsValidInvoiceCurrency(System.String)">
+            <summary>
+            Validates that the currency is valid for invoices (USDC only)
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.Constants.CurrencyConstants.IsValidSubscriptionPaymentCurrency(System.String)">
+            <summary>
+            Validates that the currency is valid for subscription payments (USDC or SOL)
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.CreateApiKeyRequest">
+            <summary>
+            Request body for creating an API key
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.CreateApiKeyRequest.#ctor(System.String)">
+            <summary>
+            Request body for creating an API key
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.ApiKeyDto">
+            <summary>
+            API key details (key value is masked)
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.ApiKeyDto.#ctor(System.Guid,System.String,System.String,System.Boolean,System.Nullable{System.DateTime},System.Int32,System.DateTime,System.Nullable{System.DateTime})">
+            <summary>
+            API key details (key value is masked)
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.ApiKeyCreatedDto">
+            <summary>
+            API key with full key value (shown only at creation)
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.ApiKeyCreatedDto.#ctor(System.Guid,System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            API key with full key value (shown only at creation)
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.RevokeApiKeyRequest">
+            <summary>
+            Request body for revoking an API key
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.RevokeApiKeyRequest.#ctor(System.Guid)">
+            <summary>
+            Request body for revoking an API key
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.RegisterRequest">
+            <summary>
+            Request body for user registration
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.RegisterRequest.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Request body for user registration
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.LoginRequest">
+            <summary>
+            Request body for user login
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.LoginRequest.#ctor(System.String,System.String)">
+            <summary>
+            Request body for user login
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.AuthResponse">
+            <summary>
+            Authentication response with tokens and user info
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.AuthResponse.#ctor(System.String,System.String,System.DateTime,Brelio.Core.DTOs.UserDto)">
+            <summary>
+            Authentication response with tokens and user info
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.RefreshTokenRequest">
+            <summary>
+            Request body for token refresh
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.RefreshTokenRequest.#ctor(System.String)">
+            <summary>
+            Request body for token refresh
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.UserDto">
+            <summary>
+            User profile information
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.UserDto.#ctor(System.Guid,System.String,System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            User profile information
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.DashboardStatsDto">
+            <summary>
+            Dashboard summary statistics
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.DashboardStatsDto.#ctor(System.Decimal,System.Int32,System.Int32,System.Int32,System.Int32,System.Collections.Generic.List{Brelio.Core.DTOs.RecentInvoiceDto})">
+            <summary>
+            Dashboard summary statistics
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.RecentInvoiceDto">
+            <summary>
+            Recent invoice summary for dashboard
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.RecentInvoiceDto.#ctor(System.Guid,System.String,System.String,System.Decimal,System.String,System.DateTime)">
+            <summary>
+            Recent invoice summary for dashboard
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.CreateInvoiceRequest">
+            <summary>
+            Request body for creating an invoice
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.CreateInvoiceRequest.#ctor(System.String,System.Decimal,System.Int32,System.Nullable{System.Guid},System.String,System.String,System.String)">
+            <summary>
+            Request body for creating an invoice
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.UpdateInvoiceRequest">
+            <summary>
+            Request body for updating an invoice
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.UpdateInvoiceRequest.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Request body for updating an invoice
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.InvoiceDto">
+            <summary>
+            Full invoice details
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.InvoiceDto.#ctor(System.Guid,System.String,System.String,System.Decimal,System.String,Brelio.Core.Entities.InvoiceStatus,System.String,System.String,System.String,System.String,System.DateTime,System.Nullable{System.DateTime},System.DateTime,Brelio.Core.DTOs.TransactionDto)">
+            <summary>
+            Full invoice details
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.InvoiceListDto">
+            <summary>
+            Invoice summary for list views
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.InvoiceListDto.#ctor(System.Guid,System.String,System.String,System.Decimal,System.String,Brelio.Core.Entities.InvoiceStatus,System.String,System.DateTime,System.Nullable{System.DateTime},System.DateTime)">
+            <summary>
+            Invoice summary for list views
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.PublicInvoiceDto">
+            <summary>
+            Public invoice details for payment pages
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.PublicInvoiceDto.#ctor(System.String,System.String,System.Decimal,System.String,System.String,System.String,System.DateTime,System.String)">
+            <summary>
+            Public invoice details for payment pages
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.TransactionDto">
+            <summary>
+            Payment transaction details
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.TransactionDto.#ctor(System.String,System.Decimal,System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Payment transaction details
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.PlanDto">
+            <summary>
+            Subscription plan details
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.PlanDto.#ctor(System.Guid,System.String,System.String,System.Decimal,System.Decimal,System.String,System.Int32,System.Boolean,System.Int32,System.Boolean,System.String,System.String,Brelio.Core.DTOs.PlanFeaturesDto,System.String)">
+            <summary>
+            Subscription plan details
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.PlanFeaturesDto">
+            <summary>
+            Plan features configuration
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.PlanFeaturesDto.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Plan features configuration
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.PlanSummaryDto">
+            <summary>
+            Plan summary for list views
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.PlanSummaryDto.#ctor(System.Guid,System.String,System.String,System.Decimal,System.Decimal,System.String,System.Int32,System.Boolean,System.String,System.String)">
+            <summary>
+            Plan summary for list views
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.CreateSubscriptionRequest">
+            <summary>
+            Request body for creating a subscription
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.CreateSubscriptionRequest.#ctor(System.Guid,System.String,System.String,System.String)">
+            <summary>
+            Request body for creating a subscription
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.SubscriptionDto">
+            <summary>
+            Subscription details
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.SubscriptionDto.#ctor(System.Guid,System.Guid,System.String,System.String,System.String,System.String,System.Decimal,System.String,System.DateTime,System.DateTime,System.DateTime,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.DateTime)">
+            <summary>
+            Subscription details
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.CurrentSubscriptionDto">
+            <summary>
+            Current subscription with usage details
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.CurrentSubscriptionDto.#ctor(System.Nullable{System.Guid},System.String,System.String,System.String,System.String,System.Decimal,System.String,System.Nullable{System.DateTime},System.Int32,System.Boolean,System.Int32,Brelio.Core.DTOs.PlanFeaturesDto)">
+            <summary>
+            Current subscription with usage details
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.UpgradeSubscriptionRequest">
+            <summary>
+            Request body for upgrading subscription
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.UpgradeSubscriptionRequest.#ctor(System.Guid,System.String,System.String,System.String)">
+            <summary>
+            Request body for upgrading subscription
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.CancelSubscriptionRequest">
+            <summary>
+            Request body for cancelling subscription
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.CancelSubscriptionRequest.#ctor(System.String)">
+            <summary>
+            Request body for cancelling subscription
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.CreateWalletRequest">
+            <summary>
+            Request body for adding a wallet
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.CreateWalletRequest.#ctor(System.String,System.String)">
+            <summary>
+            Request body for adding a wallet
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.UpdateWalletRequest">
+            <summary>
+            Request body for updating a wallet
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.UpdateWalletRequest.#ctor(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Request body for updating a wallet
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.WalletDto">
+            <summary>
+            Wallet details
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.WalletDto.#ctor(System.Guid,System.String,System.String,System.Boolean,System.DateTime)">
+            <summary>
+            Wallet details
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.CreateWebhookRequest">
+            <summary>
+            Request body for creating a webhook
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.CreateWebhookRequest.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Request body for creating a webhook
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.UpdateWebhookRequest">
+            <summary>
+            Request body for updating a webhook
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.UpdateWebhookRequest.#ctor(System.String,System.Collections.Generic.List{System.String},System.Nullable{System.Boolean})">
+            <summary>
+            Request body for updating a webhook
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.WebhookDto">
+            <summary>
+            Webhook configuration details
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.WebhookDto.#ctor(System.Guid,System.String,System.Collections.Generic.List{System.String},System.Boolean,System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.DateTime)">
+            <summary>
+            Webhook configuration details
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.WebhookWithSecretDto">
+            <summary>
+            Webhook with signing secret (shown only at creation)
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.WebhookWithSecretDto.#ctor(System.Guid,System.String,System.String,System.Collections.Generic.List{System.String},System.Boolean,System.DateTime)">
+            <summary>
+            Webhook with signing secret (shown only at creation)
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.WebhookDeliveryDto">
+            <summary>
+            Webhook delivery attempt details
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.WebhookDeliveryDto.#ctor(System.Guid,System.String,System.Int32,System.Boolean,System.Int32,System.DateTime,System.Nullable{System.DateTime})">
+            <summary>
+            Webhook delivery attempt details
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.TestWebhookRequest">
+            <summary>
+            Request body for testing a webhook
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.TestWebhookRequest.#ctor(System.Guid)">
+            <summary>
+            Request body for testing a webhook
+            </summary>
+        </member>
+        <member name="T:Brelio.Core.DTOs.WebhookPayload">
+            <summary>
+            Webhook event payload structure
+            </summary>
+        </member>
+        <member name="M:Brelio.Core.DTOs.WebhookPayload.#ctor(System.String,System.DateTime,System.Object)">
+            <summary>
+            Webhook event payload structure
+            </summary>
+        </member>
+        <member name="P:Brelio.Core.Entities.Invoice.Currency">
+            <summary>
+            Invoice currency - always USDC. Brelio only supports USDC invoices on Solana.
+            </summary>
+        </member>
+        <member name="P:Brelio.Core.Entities.Plan.Currency">
+            <summary>
+            Subscription payment currency - always USDC (SOL payments are converted)
+            </summary>
+        </member>
+        <member name="P:Brelio.Core.Entities.Plan.FeatureUsdc">
+            <summary>
+            USDC invoice payments - always true as Brelio only supports USDC invoices
+            </summary>
+        </member>
+        <member name="P:Brelio.Core.Entities.Plan.FeatureSol">
+            <summary>
+            Allow paying subscription with SOL (converted to USDC internally)
+            </summary>
+        </member>
+    </members>
+</doc>

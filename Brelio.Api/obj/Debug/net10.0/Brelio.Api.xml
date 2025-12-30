@@ -1,0 +1,633 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Brelio.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Brelio.Api.Controllers.ApiKeysController">
+            <summary>
+            Manage API keys for programmatic access
+            </summary>
+            <remarks>
+            Create and manage API keys to integrate Brelio with your applications.
+            API access requires Pro plan or higher.
+            </remarks>
+        </member>
+        <member name="M:Brelio.Api.Controllers.ApiKeysController.GetApiKeys">
+            <summary>
+            List all API keys
+            </summary>
+            <remarks>
+            Returns all API keys for the authenticated user. Key values are masked for security.
+            </remarks>
+            <returns>List of API keys</returns>
+            <response code="200">API keys retrieved successfully</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.ApiKeysController.CreateApiKey(Brelio.Core.DTOs.CreateApiKeyRequest)">
+            <summary>
+            Create a new API key
+            </summary>
+            <remarks>
+            Creates a new API key. The full key value is only shown once at creation time.
+            Store it securely as it cannot be retrieved later.
+            </remarks>
+            <param name="request">API key details including name and permissions</param>
+            <returns>Created API key with full key value</returns>
+            <response code="201">API key created successfully</response>
+            <response code="400">API access not available on current plan</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.ApiKeysController.RevokeApiKey(System.Guid)">
+            <summary>
+            Revoke an API key
+            </summary>
+            <remarks>
+            Permanently revokes an API key. This action cannot be undone.
+            Any requests using this key will be rejected immediately.
+            </remarks>
+            <param name="id">API key ID to revoke</param>
+            <response code="204">API key revoked successfully</response>
+            <response code="404">API key not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.AuthController">
+            <summary>
+            Authentication endpoints for user registration, login, and session management
+            </summary>
+        </member>
+        <member name="M:Brelio.Api.Controllers.AuthController.Register(Brelio.Core.DTOs.RegisterRequest)">
+            <summary>
+            Register a new user account
+            </summary>
+            <remarks>
+            Creates a new Brelio account for digital dollar invoicing. Returns access and refresh tokens on success.
+            </remarks>
+            <param name="request">Registration details including email and password</param>
+            <returns>Authentication tokens and user information</returns>
+            <response code="200">Account created successfully</response>
+            <response code="400">Email already registered or validation error</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.AuthController.Login(Brelio.Core.DTOs.LoginRequest)">
+            <summary>
+            Authenticate and obtain access tokens
+            </summary>
+            <remarks>
+            Login with email and password to receive JWT access and refresh tokens.
+            </remarks>
+            <param name="request">Login credentials</param>
+            <returns>Authentication tokens and user information</returns>
+            <response code="200">Login successful</response>
+            <response code="401">Invalid credentials</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.AuthController.Refresh(Brelio.Core.DTOs.RefreshTokenRequest)">
+            <summary>
+            Refresh access token
+            </summary>
+            <remarks>
+            Exchange a valid refresh token for new access and refresh tokens.
+            </remarks>
+            <param name="request">Current refresh token</param>
+            <returns>New authentication tokens</returns>
+            <response code="200">Tokens refreshed successfully</response>
+            <response code="401">Invalid or expired refresh token</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.AuthController.Logout(Brelio.Core.DTOs.RefreshTokenRequest)">
+            <summary>
+            Logout and invalidate refresh token
+            </summary>
+            <remarks>
+            Revokes the provided refresh token, preventing further use.
+            </remarks>
+            <param name="request">Refresh token to revoke</param>
+            <response code="204">Logout successful</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.AuthController.GetCurrentUser">
+            <summary>
+            Get current user profile
+            </summary>
+            <remarks>
+            Returns the authenticated user's profile information.
+            </remarks>
+            <returns>User profile details</returns>
+            <response code="200">User profile retrieved</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.DashboardController">
+            <summary>
+            Dashboard analytics and summary statistics
+            </summary>
+            <remarks>
+            Retrieve aggregated statistics about invoices, payments, and account activity.
+            </remarks>
+        </member>
+        <member name="M:Brelio.Api.Controllers.DashboardController.GetStats">
+            <summary>
+            Get dashboard statistics
+            </summary>
+            <remarks>
+            Returns summary statistics including total invoices, payments received,
+            pending amounts, and recent activity.
+            </remarks>
+            <returns>Dashboard statistics</returns>
+            <response code="200">Statistics retrieved successfully</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.InvoicesController">
+            <summary>
+            Manage digital dollar invoices - create, update, and track payment status
+            </summary>
+        </member>
+        <member name="M:Brelio.Api.Controllers.InvoicesController.GetInvoices(System.String)">
+            <summary>
+            List all invoices
+            </summary>
+            <remarks>
+            Returns all invoices for the authenticated user. Optionally filter by status.
+            </remarks>
+            <param name="status">Filter by status: Pending, Paid, Expired, or Cancelled</param>
+            <returns>List of invoices</returns>
+            <response code="200">Invoices retrieved successfully</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.InvoicesController.GetInvoice(System.Guid)">
+            <summary>
+            Get invoice details
+            </summary>
+            <remarks>
+            Returns full details for a specific invoice, including payment information if paid.
+            </remarks>
+            <param name="id">Invoice ID</param>
+            <returns>Invoice details</returns>
+            <response code="200">Invoice retrieved successfully</response>
+            <response code="404">Invoice not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.InvoicesController.CreateInvoice(Brelio.Core.DTOs.CreateInvoiceRequest)">
+            <summary>
+            Create a new invoice
+            </summary>
+            <remarks>
+            Creates a new digital dollar invoice. The invoice will be payable in USDC to your configured wallet address.
+            A unique payment link is generated for sharing with your client.
+            </remarks>
+            <param name="request">Invoice details</param>
+            <returns>Created invoice</returns>
+            <response code="201">Invoice created successfully</response>
+            <response code="400">Validation error or no wallet configured</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.InvoicesController.UpdateInvoice(System.Guid,Brelio.Core.DTOs.UpdateInvoiceRequest)">
+            <summary>
+            Update an invoice
+            </summary>
+            <remarks>
+            Updates invoice details. Only pending invoices can be modified.
+            </remarks>
+            <param name="id">Invoice ID</param>
+            <param name="request">Updated invoice details</param>
+            <returns>Updated invoice</returns>
+            <response code="200">Invoice updated successfully</response>
+            <response code="400">Invoice cannot be modified (not pending)</response>
+            <response code="404">Invoice not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.InvoicesController.CancelInvoice(System.Guid)">
+            <summary>
+            Cancel an invoice
+            </summary>
+            <remarks>
+            Cancels a pending invoice. Only pending invoices can be cancelled.
+            Paid or expired invoices cannot be cancelled.
+            </remarks>
+            <param name="id">Invoice ID</param>
+            <response code="204">Invoice cancelled successfully</response>
+            <response code="400">Invoice cannot be cancelled (not pending)</response>
+            <response code="404">Invoice not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.PayController">
+            <summary>
+            Public payment endpoints for invoice recipients
+            </summary>
+            <remarks>
+            These endpoints are publicly accessible and do not require authentication.
+            They are used by payment pages to display invoice details to payers.
+            </remarks>
+        </member>
+        <member name="M:Brelio.Api.Controllers.PayController.GetInvoice(System.String)">
+            <summary>
+            Get public invoice details for payment
+            </summary>
+            <remarks>
+            Returns invoice details needed to complete a digital dollar payment.
+            This endpoint is public and does not require authentication.
+            The response includes the payment address and amount in USDC.
+            </remarks>
+            <param name="shortCode">Invoice short code from the payment link</param>
+            <returns>Public invoice details</returns>
+            <response code="200">Invoice retrieved successfully</response>
+            <response code="404">Invoice not found or expired</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.PlansController">
+            <summary>
+            Subscription plans and pricing information
+            </summary>
+            <remarks>
+            Browse available Brelio subscription plans. Plans determine invoice limits,
+            features, and pricing. All plans are priced in USDC.
+            </remarks>
+        </member>
+        <member name="M:Brelio.Api.Controllers.PlansController.GetPlans">
+            <summary>
+            List all available plans
+            </summary>
+            <remarks>
+            Returns all active subscription plans with pricing and feature details.
+            Plans are sorted by price tier from lowest to highest.
+            </remarks>
+            <returns>List of available plans</returns>
+            <response code="200">Plans retrieved successfully</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.PlansController.GetPlan(System.String)">
+            <summary>
+            Get plan details
+            </summary>
+            <remarks>
+            Returns full details for a specific plan by ID or slug.
+            Use slug for user-friendly URLs (e.g., "starter", "pro", "business").
+            </remarks>
+            <param name="idOrSlug">Plan ID (GUID) or slug (e.g., "starter")</param>
+            <returns>Plan details</returns>
+            <response code="200">Plan retrieved successfully</response>
+            <response code="404">Plan not found</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.SubscriptionsController">
+            <summary>
+            Manage subscription plans and billing
+            </summary>
+            <remarks>
+            Subscribe to Brelio plans, upgrade or downgrade, and track usage limits.
+            All plan payments are processed in USDC.
+            </remarks>
+        </member>
+        <member name="M:Brelio.Api.Controllers.SubscriptionsController.GetCurrentSubscription">
+            <summary>
+            Get current subscription
+            </summary>
+            <remarks>
+            Returns the user's active subscription with plan details and usage limits.
+            </remarks>
+            <returns>Current subscription details</returns>
+            <response code="200">Subscription retrieved successfully</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.SubscriptionsController.GetSubscriptions">
+            <summary>
+            List subscription history
+            </summary>
+            <remarks>
+            Returns all subscriptions for the user, including past and cancelled subscriptions.
+            </remarks>
+            <returns>List of subscriptions</returns>
+            <response code="200">Subscriptions retrieved successfully</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.SubscriptionsController.CreateSubscription(Brelio.Core.DTOs.CreateSubscriptionRequest)">
+            <summary>
+            Create a new subscription
+            </summary>
+            <remarks>
+            Subscribe to a Brelio plan. Payment is processed in USDC.
+            </remarks>
+            <param name="request">Subscription details including plan and billing cycle</param>
+            <returns>Created subscription</returns>
+            <response code="201">Subscription created successfully</response>
+            <response code="400">User already has active subscription or invalid request</response>
+            <response code="404">Plan not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.SubscriptionsController.UpgradeSubscription(Brelio.Core.DTOs.UpgradeSubscriptionRequest)">
+            <summary>
+            Upgrade subscription
+            </summary>
+            <remarks>
+            Upgrade to a higher-tier plan. Prorated billing applies.
+            </remarks>
+            <param name="request">New plan details</param>
+            <returns>Updated subscription</returns>
+            <response code="200">Subscription upgraded successfully</response>
+            <response code="400">Cannot upgrade or invalid request</response>
+            <response code="404">Plan not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.SubscriptionsController.CancelSubscription(Brelio.Core.DTOs.CancelSubscriptionRequest)">
+            <summary>
+            Cancel subscription
+            </summary>
+            <remarks>
+            Cancel the current subscription. Access continues until the end of the billing period.
+            </remarks>
+            <param name="request">Cancellation details</param>
+            <returns>Cancelled subscription</returns>
+            <response code="200">Subscription cancelled successfully</response>
+            <response code="404">No active subscription found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.SubscriptionsController.CanCreateInvoice">
+            <summary>
+            Check if user can create invoices
+            </summary>
+            <remarks>
+            Verifies the user has an active subscription with remaining invoice quota.
+            </remarks>
+            <returns>Whether user can create more invoices</returns>
+            <response code="200">Check completed</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.SubscriptionsController.GetUsage">
+            <summary>
+            Get current usage statistics
+            </summary>
+            <remarks>
+            Returns invoice usage for the current billing period against plan limits.
+            </remarks>
+            <returns>Usage statistics</returns>
+            <response code="200">Usage retrieved successfully</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.V1.InvoicesV1Controller">
+            <summary>
+            Programmatic invoice management via API key authentication
+            </summary>
+            <remarks>
+            Create and manage digital dollar invoices programmatically.
+            Authenticate requests using your API key in the X-API-Key header.
+            </remarks>
+        </member>
+        <member name="M:Brelio.Api.Controllers.V1.InvoicesV1Controller.CreateInvoice(Brelio.Api.Controllers.V1.CreateInvoiceApiRequest)">
+            <summary>
+            Create a new invoice
+            </summary>
+            <remarks>
+            Creates a new digital dollar invoice payable in USDC.
+            If no wallet is specified, the invoice will use your primary payment address.
+            Triggers the `invoice.created` webhook event.
+            </remarks>
+            <param name="request">Invoice details</param>
+            <returns>Created invoice with payment details</returns>
+            <response code="201">Invoice created successfully</response>
+            <response code="400">Validation error or no wallet configured</response>
+            <response code="401">Invalid or missing API key</response>
+            <response code="404">Specified wallet not found</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.V1.InvoicesV1Controller.GetInvoice(System.Guid)">
+            <summary>
+            Get invoice by ID
+            </summary>
+            <remarks>
+            Returns full details for a specific invoice, including payment information if paid.
+            </remarks>
+            <param name="id">Invoice ID</param>
+            <returns>Invoice details</returns>
+            <response code="200">Invoice retrieved successfully</response>
+            <response code="401">Invalid or missing API key</response>
+            <response code="404">Invoice not found</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.V1.InvoicesV1Controller.ListInvoices(System.String)">
+            <summary>
+            List all invoices
+            </summary>
+            <remarks>
+            Returns all invoices. Optionally filter by status.
+            </remarks>
+            <param name="status">Filter by status: Pending, Paid, Expired, or Cancelled</param>
+            <returns>List of invoices</returns>
+            <response code="200">Invoices retrieved successfully</response>
+            <response code="401">Invalid or missing API key</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.V1.InvoicesV1Controller.CancelInvoice(System.Guid)">
+            <summary>
+            Cancel an invoice
+            </summary>
+            <remarks>
+            Cancels a pending invoice. Only pending invoices can be cancelled.
+            Triggers the `invoice.cancelled` webhook event.
+            </remarks>
+            <param name="id">Invoice ID</param>
+            <response code="204">Invoice cancelled successfully</response>
+            <response code="400">Invoice cannot be cancelled (not pending)</response>
+            <response code="401">Invalid or missing API key</response>
+            <response code="404">Invoice not found</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.V1.CreateInvoiceApiRequest">
+            <summary>
+            Request body for creating an invoice via API
+            </summary>
+        </member>
+        <member name="M:Brelio.Api.Controllers.V1.CreateInvoiceApiRequest.#ctor(System.String,System.Decimal,System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Request body for creating an invoice via API
+            </summary>
+        </member>
+        <member name="T:Brelio.Api.Controllers.V1.InvoiceListItemDto">
+            <summary>
+            Invoice list item for API responses
+            </summary>
+        </member>
+        <member name="M:Brelio.Api.Controllers.V1.InvoiceListItemDto.#ctor(System.Guid,System.String,System.String,System.Decimal,System.String,System.String,System.String,System.String,System.DateTime,System.Nullable{System.DateTime},System.DateTime)">
+            <summary>
+            Invoice list item for API responses
+            </summary>
+        </member>
+        <member name="T:Brelio.Api.Controllers.WalletsController">
+            <summary>
+            Manage payment addresses for receiving digital dollars
+            </summary>
+            <remarks>
+            Configure wallet addresses where you'll receive USDC payments from invoices.
+            Each user can have multiple wallets, with one designated as primary.
+            </remarks>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WalletsController.GetWallets">
+            <summary>
+            List all wallets
+            </summary>
+            <remarks>
+            Returns all payment addresses configured for the authenticated user.
+            </remarks>
+            <returns>List of wallets</returns>
+            <response code="200">Wallets retrieved successfully</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WalletsController.CreateWallet(Brelio.Core.DTOs.CreateWalletRequest)">
+            <summary>
+            Add a new wallet
+            </summary>
+            <remarks>
+            Adds a new payment address for receiving digital dollars.
+            The first wallet added automatically becomes the primary wallet.
+            </remarks>
+            <param name="request">Wallet details including address and optional label</param>
+            <returns>Created wallet</returns>
+            <response code="201">Wallet created successfully</response>
+            <response code="400">Invalid address or address already exists</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WalletsController.UpdateWallet(System.Guid,Brelio.Core.DTOs.UpdateWalletRequest)">
+            <summary>
+            Update a wallet
+            </summary>
+            <remarks>
+            Update wallet label or set as primary payment address.
+            </remarks>
+            <param name="id">Wallet ID</param>
+            <param name="request">Updated wallet details</param>
+            <returns>Updated wallet</returns>
+            <response code="200">Wallet updated successfully</response>
+            <response code="404">Wallet not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WalletsController.DeleteWallet(System.Guid)">
+            <summary>
+            Delete a wallet
+            </summary>
+            <remarks>
+            Removes a payment address. Wallets with existing invoices cannot be deleted.
+            </remarks>
+            <param name="id">Wallet ID</param>
+            <response code="204">Wallet deleted successfully</response>
+            <response code="400">Wallet has existing invoices</response>
+            <response code="404">Wallet not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WalletsController.ValidateAddress(System.String)">
+            <summary>
+            Validate a payment address
+            </summary>
+            <remarks>
+            Checks if an address is valid for receiving digital dollar payments.
+            </remarks>
+            <param name="address">Payment address to validate</param>
+            <returns>Validation result</returns>
+            <response code="200">Validation completed</response>
+        </member>
+        <member name="T:Brelio.Api.Controllers.WebhooksController">
+            <summary>
+            Configure webhooks for real-time event notifications
+            </summary>
+            <remarks>
+            Set up webhooks to receive real-time notifications when events occur,
+            such as invoice payments or status changes. Webhooks require Pro plan or higher.
+            </remarks>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WebhooksController.GetWebhooks">
+            <summary>
+            List all webhooks
+            </summary>
+            <remarks>
+            Returns all configured webhooks for the authenticated user.
+            </remarks>
+            <returns>List of webhooks</returns>
+            <response code="200">Webhooks retrieved successfully</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WebhooksController.CreateWebhook(Brelio.Core.DTOs.CreateWebhookRequest)">
+            <summary>
+            Create a new webhook
+            </summary>
+            <remarks>
+            Creates a new webhook endpoint. The signing secret is only shown once at creation.
+            Store it securely to verify webhook payloads.
+            </remarks>
+            <param name="request">Webhook configuration including URL and events</param>
+            <returns>Created webhook with signing secret</returns>
+            <response code="201">Webhook created successfully</response>
+            <response code="400">Invalid URL, events, or webhooks not available on plan</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WebhooksController.UpdateWebhook(System.Guid,Brelio.Core.DTOs.UpdateWebhookRequest)">
+            <summary>
+            Update a webhook
+            </summary>
+            <remarks>
+            Update webhook URL, events, or enabled status.
+            </remarks>
+            <param name="id">Webhook ID</param>
+            <param name="request">Updated webhook configuration</param>
+            <returns>Updated webhook</returns>
+            <response code="200">Webhook updated successfully</response>
+            <response code="400">Invalid URL or events</response>
+            <response code="404">Webhook not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WebhooksController.DeleteWebhook(System.Guid)">
+            <summary>
+            Delete a webhook
+            </summary>
+            <remarks>
+            Permanently deletes a webhook. No further events will be sent to this endpoint.
+            </remarks>
+            <param name="id">Webhook ID</param>
+            <response code="204">Webhook deleted successfully</response>
+            <response code="404">Webhook not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WebhooksController.GetDeliveries(System.Guid,System.Int32)">
+            <summary>
+            Get webhook delivery history
+            </summary>
+            <remarks>
+            Returns recent delivery attempts for a webhook, including success/failure status.
+            </remarks>
+            <param name="id">Webhook ID</param>
+            <param name="limit">Maximum number of deliveries to return (default: 20)</param>
+            <returns>List of delivery attempts</returns>
+            <response code="200">Deliveries retrieved successfully</response>
+            <response code="404">Webhook not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WebhooksController.TestWebhook(System.Guid)">
+            <summary>
+            Send a test webhook
+            </summary>
+            <remarks>
+            Sends a test payload to the webhook endpoint to verify connectivity.
+            </remarks>
+            <param name="id">Webhook ID</param>
+            <returns>Test result</returns>
+            <response code="200">Test completed</response>
+            <response code="404">Webhook not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WebhooksController.RegenerateSecret(System.Guid)">
+            <summary>
+            Regenerate webhook signing secret
+            </summary>
+            <remarks>
+            Generates a new signing secret for the webhook. The old secret is invalidated immediately.
+            Update your webhook handler with the new secret.
+            </remarks>
+            <param name="id">Webhook ID</param>
+            <response code="200">Secret regenerated successfully</response>
+            <response code="404">Webhook not found</response>
+            <response code="401">Not authenticated</response>
+        </member>
+        <member name="M:Brelio.Api.Controllers.WebhooksController.GetAvailableEvents">
+            <summary>
+            List available webhook events
+            </summary>
+            <remarks>
+            Returns all event types that can be subscribed to via webhooks.
+            </remarks>
+            <returns>List of event names</returns>
+            <response code="200">Events retrieved successfully</response>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+    </members>
+</doc>

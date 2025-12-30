@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet list:*)",
+      "Bash(cat:*)",
+      "Bash(git reset:*)",
+      "Bash(Brelio.Api/Brelio.Api.csproj )",
+      "Bash(Brelio.Api/Controllers/*.cs)",
+      "Bash(Brelio.Api/Controllers/V1/*.cs)",
+      "Bash(Brelio.Api/Program.cs )",
+      "Bash(Brelio.Core/Brelio.Core.csproj )",
+      "Bash(Brelio.Core/DTOs/*.cs)"
     ]
   }
 }

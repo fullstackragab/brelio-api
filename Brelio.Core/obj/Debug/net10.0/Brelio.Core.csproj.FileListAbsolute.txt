@@ -10,3 +10,5 @@ C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\refint\Brelio.Core
 C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.pdb
 C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\ref\Brelio.Core.dll
 C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.sourcelink.json
+C:\_companies\brelio\brelio-api\Brelio.Core\bin\Debug\net10.0\Brelio.Core.xml
+C:\_companies\brelio\brelio-api\Brelio.Core\obj\Debug\net10.0\Brelio.Core.xml
