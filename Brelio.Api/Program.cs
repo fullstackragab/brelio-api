@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Text;
 using Brelio.Api.BackgroundServices;
 using Brelio.Api.Middleware;
@@ -15,7 +16,18 @@ builder.Services.AddControllers();
 
 // Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    // Include XML comments from API project
+    var apiXmlFile = Path.Combine(AppContext.BaseDirectory, "Brelio.Api.xml");
+    if (File.Exists(apiXmlFile))
+        options.IncludeXmlComments(apiXmlFile);
+
+    // Include XML comments from Core project (DTOs)
+    var coreXmlFile = Path.Combine(AppContext.BaseDirectory, "Brelio.Core.xml");
+    if (File.Exists(coreXmlFile))
+        options.IncludeXmlComments(coreXmlFile);
+});
 
 // Database
 builder.Services.AddDbContext<BrelioDbContext>(options =>
